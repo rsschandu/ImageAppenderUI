@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReaderRoutingModule } from './reader-routing.module';
 import { ReaderComponent } from './reader.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SafePipeModule } from 'safe-pipe';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     ReaderRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SafePipeModule
   ]
 })
 export class ReaderModule { }

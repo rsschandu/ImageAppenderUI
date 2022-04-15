@@ -1,2 +1,6 @@
 <p>reader works!</p>
-<div class="col-xl-12">{{pageData}}</div>
+<div class="col-xl-12" *ngFor="let para of pageData; index as i;">
+    <p>
+        {{para}}
+    </p>
+</div>

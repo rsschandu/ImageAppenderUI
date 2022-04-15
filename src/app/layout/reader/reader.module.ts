@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ReaderRoutingModule } from './reader-routing.module';
 import { ReaderComponent } from './reader.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ReaderComponent } from './reader.component';
   ],
   imports: [
     CommonModule,
-    ReaderRoutingModule
+    ReaderRoutingModule,
+    HttpClientModule
   ]
 })
 export class ReaderModule { }

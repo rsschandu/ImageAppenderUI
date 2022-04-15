@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,14 @@ import { Injectable } from '@angular/core';
 })
 export class ReaderService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+  url: string;
+  getData() {
+    return this.httpClient.get("http://localhost:8080/image-appender/home/getData?url="+this.url);
+  }
+
+  setUrl(url: string)
+  {
+    this.url=url;
+  }
 }

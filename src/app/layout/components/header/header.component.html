@@ -5,21 +5,10 @@
         <i aria-hidden="true" class="fa fa-bars text-muted"></i>
     </button>
     <div class="collapse navbar-collapse">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" type="text" />
+        <form class="form-inline my-2 my-lg-0" (ngSubmit)="setUrl()">
+            <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" [(ngModel)]="url" name="url" type="text" />
         </form>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item d-none d-xl-block">
-                <a
-                    class="nav-link btn mt-1"
-                    href="https://github.com/start-angular/SB-Admin-BS4-Angular-7/archive/master.zip"
-                    role="button"
-                    style="padding: 0.375rem 1rem !important; border-color: #999;"
-                >
-                    {{ 'Download Now' | translate }}
-                </a>
-            </li>
-            &nbsp;
             <li class="nav-item">
                 <a
                     (click)="rltAndLtr()"

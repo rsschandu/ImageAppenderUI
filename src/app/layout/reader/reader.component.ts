@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReaderService } from './reader.service';
 
 @Component({
   selector: 'app-reader',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readerService: ReaderService) { }
 
+  pageData: any;
   ngOnInit(): void {
+    this.readerService.getData().subscribe(data => {
+      this.pageData = data;
+    })
   }
 
 }

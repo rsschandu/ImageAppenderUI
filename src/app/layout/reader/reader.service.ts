@@ -9,7 +9,10 @@ export class ReaderService {
   constructor(private httpClient: HttpClient) { }
   url: string;
   getData() {
-    return this.httpClient.get("http://localhost:8080/image-appender/home/getData?url="+this.url);
+    if(this.url != undefined || this.url != null )
+    {
+      return this.httpClient.get("http://localhost:8080/image-appender/home/getData?url="+this.url);
+    }
   }
 
   setUrl(url: string)

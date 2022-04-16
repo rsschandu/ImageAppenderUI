@@ -9,18 +9,58 @@
             </button>
         </div>
         <div class="modal-body">
-            <form class="form-inline my-2 my-lg-0" (ngSubmit)="saveImages()">
-                <!-- <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" [(ngModel)]="tagString" name="tagString" type="text" /> -->
-                <div class="form-group input-group">
-                    <input class="form-control" [(ngModel)]="tagString" name="tagString" type="text" />
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button" (click)="searchGoogle(tagString)"><i class="fa fa-search"></i></button>
-                        &nbsp;
-                        <button class="btn btn-success" type="submit"><i class="fa fa-save"> Save</i></button>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form class="form-inline my-2 my-lg-0" (ngSubmit)="saveImages()">
+                        <!-- <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" [(ngModel)]="tagString" name="tagString" type="text" /> -->
+                        <div class="form-group input-group col-xl-4">
+                            <input class="form-control" [(ngModel)]="imageString" (change)="populateImages()" name="imageString"
+                                type="text" />
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Save</button>
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="form-group input-group col-xl-4">
+                            <input class="form-control" [(ngModel)]="tagString" (change)="setGlobalTags()" name="tagString"
+                                type="text" />
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" (click)="searchGoogle(tagString)"><i
+                                        class="fa fa-search"></i></button>
+                                &nbsp;
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-body table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Slno</th>
+                                    <th>Image</th>
+                                    <th>Tags</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let image of images; index as i">
+                                    <td>{{i}}</td>
+                                    <td><img [src]="image.imageUrl" ></td>
+                                    <td>
+                                        <span *ngFor="let tag of image.tags; index as j">
+                                            <button (click)="removeTag(i,j)">{{tag.tagName}}</button>
+                                        </span>
+                                    </td>
+                                    <td>@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </form>
-
+            </div>
         </div>
         <div class="modal-footer">
             <button (click)="c('Close click')" class="btn btn-secondary" type="button">Close</button>

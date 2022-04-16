@@ -30,6 +30,9 @@
                                 &nbsp;
                             </div>
                         </div>
+                        <div class="checkbox" *ngFor="let tag of tags; index as j">
+                            <label> <input type="checkbox" (change)="setTagType(j,$event)" /> {{tag.tagName}} </label>
+                        </div>
                     </form>
                 </div>
             </div>

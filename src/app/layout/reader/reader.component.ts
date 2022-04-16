@@ -32,6 +32,13 @@ export class ReaderComponent implements OnInit {
     }
   }
 
+  setTagType(i:number,e)
+  {
+    if(e.target.checked){
+      this.tags[i].tagName="core"        
+    }
+  }
+
   insertTag(tag:TagObject)
   {
     let duplicate: boolean=false;
@@ -50,7 +57,6 @@ export class ReaderComponent implements OnInit {
 
   removeTag(i:number, j:number)
   {
-    console.log("number"+j);
     this.images[i].tags.splice(j,1);
   }
 

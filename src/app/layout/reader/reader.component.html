@@ -54,10 +54,22 @@
                                     <td><img [src]="image.imageUrl" ></td>
                                     <td>
                                         <span *ngFor="let tag of image.tags; index as j">
-                                            <button (click)="removeTag(i,j)">{{tag.tagName}}</button>
+                                            <button [ngClass]="tag.tagType" (click)="removeTag(i,j)">{{tag.tagName}}</button>
                                         </span>
                                     </td>
-                                    <td>@mdo</td>
+                                    <td>
+                                        <div class="form-group input-group col-xl-4">
+                                            <input class="form-control" style="min-width: 100px;" [(ngModel)]="tagsToAddString[i]" name="tagsToAddString"
+                                                type="text" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-success" (click)="addTags(i,tagsToAddString[i])"><i class="fa fa-plus"></i>Add</button>
+                                                &nbsp;
+                                                <button class="btn btn-danger" (click)="deleteImage(i)"><i class="fa fa-trash"></i></button>
+                                                &nbsp;
+                                            </div>
+                                                
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

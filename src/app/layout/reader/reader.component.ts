@@ -15,6 +15,7 @@ export class ReaderComponent implements OnInit {
   imageString: string;
   images: ImageObject[] = [];
   tags: TagObject[] = [];
+  tagsToAddString: string[] = [];
 
   constructor(private readerService: ReaderService,private modalService: NgbModal) { }
 
@@ -35,7 +36,11 @@ export class ReaderComponent implements OnInit {
   setTagType(i:number,e)
   {
     if(e.target.checked){
-      this.tags[i].tagName="core"        
+      this.tags[i].tagType="core"        
+    }
+    else
+    {
+      this.tags[i].tagType="descriptor"
     }
   }
 
@@ -58,6 +63,38 @@ export class ReaderComponent implements OnInit {
   removeTag(i:number, j:number)
   {
     this.images[i].tags.splice(j,1);
+  }
+
+  deleteImage(i:number)
+  {
+    this.images.splice(i,1);
+  }
+
+  addTags(index:number, tagNamesString:string)
+  {
+    let tagNames = tagNamesString.split(",");
+    tagNames = [ ...new Set(tagNames) ]
+    for(let j=0;j<tagNames.length;j++)
+    {
+      let duplicate: boolean=false;
+      for(let i=0;i<this.images[index].tags.length;i++)
+      {
+        if(this.images[index].tags[i].tagName == tagNames[j])
+        {
+          duplicate=true;
+        }
+      }
+      if(duplicate == false)
+      {
+        let tag: TagObject = {
+          tagName: '',
+          tagType: 'descriptor'
+        };
+        tag.tagName=tagNames[j];
+        this.images[index].tags.push(tag);
+      }
+    }
+    this.tagsToAddString[index] = '';
   }
 
   insertImage(image:ImageObject)
@@ -110,13 +147,11 @@ export class ReaderComponent implements OnInit {
       image.tags=this.tags.slice(0);
       if(image.imageUrl != '')
       {
-        console.log(this.tags);
         this.insertImage(image);
       }
       // this.images.push(image);
       this.images = [ ...new Set(this.images) ];
     }
-    console.log(this.images);
   }
 
   open(content) {
@@ -136,7 +171,7 @@ export class ReaderComponent implements OnInit {
   }
 
   saveImages(){
-    console.log("save Images");
+    this.readerService.postImages(this.images).subscribe(data => {console.log("images saved successfully")});
   }
 
   private getDismissReason(reason: any): string {

@@ -8,6 +8,10 @@
             <i class="fa fa-file-o"></i>&nbsp;
             <span>{{ 'Reader' | translate }}</span>
         </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/images']" class="list-group-item">
+            <i class="fa fa-file-o"></i>&nbsp;
+            <span>{{ 'Images' | translate }}</span>
+        </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <span>{{ 'Charts' | translate }}</span>

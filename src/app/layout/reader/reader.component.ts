@@ -33,6 +33,11 @@ export class ReaderComponent implements OnInit {
     }
   }
 
+  viewImage(imageId: number)
+  {
+    console.log("view image with id:"+imageId);
+  }
+
   setTagType(i:number,e)
   {
     if(e.target.checked){

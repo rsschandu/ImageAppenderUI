@@ -1,5 +1,5 @@
 <p>reader works!</p>
-   
+
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-container">
         <div class="modal-header">
@@ -14,16 +14,16 @@
                     <form class="form-inline my-2 my-lg-0" (ngSubmit)="saveImages()">
                         <!-- <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" [(ngModel)]="tagString" name="tagString" type="text" /> -->
                         <div class="form-group input-group col-xl-4">
-                            <input class="form-control" [(ngModel)]="imageString" (change)="populateImages()" name="imageString"
-                                type="text" />
+                            <input class="form-control" [(ngModel)]="imageString" (change)="populateImages()"
+                                name="imageString" type="text" />
                             <div class="input-group-append">
                                 <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Save</button>
                                 &nbsp;
                             </div>
                         </div>
                         <div class="form-group input-group col-xl-4">
-                            <input class="form-control" [(ngModel)]="tagString" (change)="setGlobalTags()" name="tagString"
-                                type="text" />
+                            <input class="form-control" [(ngModel)]="tagString" (change)="setGlobalTags()"
+                                name="tagString" type="text" />
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="button" (click)="searchGoogle(tagString)"><i
                                         class="fa fa-search"></i></button>
@@ -51,23 +51,27 @@
                             <tbody>
                                 <tr *ngFor="let image of images; index as i">
                                     <td>{{i}}</td>
-                                    <td><img [src]="image.imageUrl" ></td>
+                                    <td><img [src]="image.imageUrl"></td>
                                     <td>
                                         <span *ngFor="let tag of image.tags; index as j">
-                                            <button [ngClass]="tag.tagType" (click)="removeTag(i,j)">{{tag.tagName}}</button>
+                                            <button [ngClass]="tag.tagType"
+                                                (click)="removeTag(i,j)">{{tag.tagName}}</button>
                                         </span>
                                     </td>
                                     <td>
                                         <div class="form-group input-group col-xl-4">
-                                            <input class="form-control" style="min-width: 100px;" [(ngModel)]="tagsToAddString[i]" name="tagsToAddString"
-                                                type="text" />
+                                            <input class="form-control" style="min-width: 100px;"
+                                                [(ngModel)]="tagsToAddString[i]" name="tagsToAddString" type="text" />
                                             <div class="input-group-append">
-                                                <button class="btn btn-success" (click)="addTags(i,tagsToAddString[i])"><i class="fa fa-plus"></i>Add</button>
+                                                <button class="btn btn-success"
+                                                    (click)="addTags(i,tagsToAddString[i])"><i
+                                                        class="fa fa-plus"></i>Add</button>
                                                 &nbsp;
-                                                <button class="btn btn-danger" (click)="deleteImage(i)"><i class="fa fa-trash"></i></button>
+                                                <button class="btn btn-danger" (click)="deleteImage(i)"><i
+                                                        class="fa fa-trash"></i></button>
                                                 &nbsp;
                                             </div>
-                                                
+
                                         </div>
                                     </td>
                                 </tr>

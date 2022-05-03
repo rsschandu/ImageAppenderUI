@@ -15,6 +15,7 @@ const routes: Routes = [
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then((m) => m.ChartsModule) },
             { path: 'reader', loadChildren: () => import('./reader/reader.module').then((m) => m.ReaderModule) },
             { path: 'images', loadChildren: () => import('./images/images.module').then((m) => m.ImagesModule) },
+            { path: 'tags', loadChildren: () => import('./tags/tags.module').then((m) => m.TagsModule) },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule) },
             { path: 'forms', loadChildren: () => import('./form/form.module').then((m) => m.FormModule) },
             {

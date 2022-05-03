@@ -12,6 +12,10 @@
             <i class="fa fa-image"></i>&nbsp;
             <span>{{ 'Images' | translate }}</span>
         </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tags']" class="list-group-item">
+            <i class="fa fa-tag"></i>&nbsp;
+            <span>{{ 'Tags' | translate }}</span>
+        </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <span>{{ 'Charts' | translate }}</span>

@@ -2141,6 +2141,11 @@
   "resolved" "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   "version" "1.0.0"
 
+"bootstrap@^5.1.3":
+  "integrity" "sha512-fcQztozJ8jToQWXxVuEyXWW+dSo8AiXWKwiSSrKWsRB/Qt+Ewwza+JWoLKiTuQLaEPhdNAJ7+Dosc9DOIqNy7Q=="
+  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.1.3.tgz"
+  "version" "5.1.3"
+
 "brace-expansion@^1.1.7":
   "integrity" "sha1-wHshHHyVLsH479Uad+8NHTmQopI="
   "resolved" "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.8.tgz"
@@ -4868,6 +4873,13 @@
   dependencies:
     "lodash-es" "^4.17.15"
     "tslib" "^2.3.0"
+
+"ngx-bootstrap@^8.0.0":
+  "integrity" "sha512-UjJ/57Pr7ctdI2L113QX1IqJPYtOMrp5Qq/RLvUT1TOwPQWPi9LXTQ/7BtipkptQjer7Fk9yueITH3Y8vD+Dmg=="
+  "resolved" "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-8.0.0.tgz"
+  "version" "8.0.0"
+  dependencies:
+    "tslib" "^2.0.0"
 
 "node-forge@^1.2.0":
   "integrity" "sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA=="

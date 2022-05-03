@@ -1,8 +1,10 @@
-
+<div *ngIf="pageLoading">
+    Loading .....
+</div>
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-container">
         <div class="modal-header">
-            <h4 class="modal-title">Images</h4>
+            <h4 class="modal-title">Images <span *ngIf="imageLoading"> .... </span></h4>
             <button (click)="d('Cross click')" aria-label="Close" class="close" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>

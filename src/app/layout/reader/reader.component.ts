@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageObject } from './objects/imageObject';
 import { TagObject } from './objects/TagObject';
 
+
 @Component({
   selector: 'app-reader',
   templateUrl: './reader.component.html',
@@ -16,6 +17,8 @@ export class ReaderComponent implements OnInit {
   images: ImageObject[] = [];
   tags: TagObject[] = [];
   tagsToAddString: string[] = [];
+  pageLoading: boolean = false;
+  imageLoading: boolean = false;
 
   constructor(private readerService: ReaderService, private modalService: NgbModal) {
     this.readerService.customObservable.subscribe((res) => {
@@ -32,8 +35,10 @@ export class ReaderComponent implements OnInit {
 
   getPageData() {
     if (this.readerService.url != undefined || this.readerService.url != null) {
+      this.pageLoading=true;
       this.readerService.getData().subscribe(data => {
         this.pageData = data;
+        this.pageLoading = false;
       })
     }
   }
@@ -157,7 +162,11 @@ export class ReaderComponent implements OnInit {
   }
 
   saveImages() {
-    this.readerService.postImages(this.images).subscribe(data => { console.log("images saved successfully") });
+    this.imageLoading=true;
+    this.readerService.postImages(this.images).subscribe(data => { 
+      console.log("images saved successfully");
+      this.imageLoading=false;
+   });
   }
 
   private getDismissReason(reason: any): string {

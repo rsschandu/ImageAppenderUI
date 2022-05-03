@@ -11,7 +11,7 @@ import { ReaderService } from '../../reader/reader.service';
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
     url: string;
-    constructor(private translate: TranslateService, public router: Router,private readerService: ReaderService) {
+    constructor(private translate: TranslateService, public router: Router, private readerService: ReaderService) {
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
                 this.toggleSidebar();
@@ -46,7 +46,9 @@ export class HeaderComponent implements OnInit {
         this.translate.use(language);
     }
 
-    setUrl(){
+    setUrl() {
         this.readerService.setUrl(this.url);
+        this.readerService.refreshPage();
     }
+
 }

@@ -163,9 +163,11 @@ export class ReaderComponent implements OnInit {
     this.tagString = window.getSelection().toString();
     this.modalService.open(content, { windowClass: "image-modal-class" }).result.then(
       (result) => {
+        this.getPageData();
         this.closeResult = `Closed with: ${result}`;
       },
       (reason) => {
+        this.getPageData();
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
     );

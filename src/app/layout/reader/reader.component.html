@@ -15,14 +15,6 @@
                     <form class="form-inline my-2 my-lg-0" (ngSubmit)="saveImages()">
                         <!-- <input class="form-control mr-sm-2" placeholder="{{ 'Search' | translate }}" [(ngModel)]="tagString" name="tagString" type="text" /> -->
                         <div class="form-group input-group col-xl-4">
-                            <input class="form-control" [(ngModel)]="imageString" (change)="populateImages()"
-                                name="imageString" type="text" />
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Save</button>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="form-group input-group col-xl-4">
                             <input class="form-control" [(ngModel)]="tagString" (change)="setGlobalTags()"
                                 name="tagString" type="text" />
                             <div class="input-group-append">
@@ -31,6 +23,15 @@
                                 &nbsp;
                             </div>
                         </div>
+                        <div class="form-group input-group col-xl-4">
+                            <input class="form-control" [(ngModel)]="imageString" (change)="populateImages()"
+                                name="imageString" type="text" />
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Save</button>
+                                &nbsp;
+                            </div>
+                        </div>
+                        
                         <div class="checkbox" *ngFor="let tag of tags; index as j">
                             <label> <input type="checkbox" (change)="setTagType(j,$event)" /> {{tag.tagName}} </label>
                         </div>

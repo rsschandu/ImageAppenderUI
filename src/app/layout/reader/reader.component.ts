@@ -161,6 +161,7 @@ export class ReaderComponent implements OnInit {
 
   open(content) {
     this.tagString = window.getSelection().toString();
+    this.setGlobalTags();
     this.modalService.open(content, { windowClass: "image-modal-class" }).result.then(
       (result) => {
         this.tags.splice(0,this.tags.length);

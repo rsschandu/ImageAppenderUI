@@ -3,6 +3,7 @@ import { ReaderService } from './reader.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageObject } from './objects/imageObject';
 import { TagObject } from './objects/TagObject';
+import { ImagesService } from '../images/images.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ReaderComponent implements OnInit {
   pageLoading: boolean = false;
   imageLoading: boolean = false;
 
-  constructor(private readerService: ReaderService, private modalService: NgbModal) {
+  constructor(private readerService: ReaderService, private modalService: NgbModal, private imagesService: ImagesService) {
     this.readerService.customObservable.subscribe((res) => {
       this.getPageData();
     }
@@ -111,6 +112,11 @@ export class ReaderComponent implements OnInit {
   }
 
   setGlobalTags() {
+    if(this.tagString == '')
+    {
+      this.tags.splice(0,this.tags.length);
+      this.images.splice(0,this.images.length);
+    }
     let tagNames: string[] = this.tagString.split(" ");
     tagNames = [...new Set(tagNames)]
     for (let tagName of tagNames) {
@@ -125,6 +131,14 @@ export class ReaderComponent implements OnInit {
       }
       // this.tags.push(tag);
     }
+    this.fetchImages();
+  }
+
+  fetchImages() {
+    let tagString: string = this.tagString.replace(" ",",");
+    this.imagesService.getImages(tagString).subscribe( data => {
+      this.images=data;
+    })
   }
 
   populateImages() {
@@ -164,7 +178,7 @@ export class ReaderComponent implements OnInit {
   saveImages() {
     this.imageLoading=true;
     this.readerService.postImages(this.images).subscribe(data => { 
-      console.log("images saved successfully");
+      this.images.splice(0,this.images.length);
       this.imageLoading=false;
    });
   }

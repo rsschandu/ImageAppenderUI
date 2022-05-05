@@ -164,12 +164,16 @@ export class ReaderComponent implements OnInit {
     this.setGlobalTags();
     this.modalService.open(content, { windowClass: "image-modal-class" }).result.then(
       (result) => {
+        this.tagString = '';
+        this.imageString = '';
         this.tags.splice(0,this.tags.length);
         this.images.splice(0,this.images.length);
         this.getPageData();
         this.closeResult = `Closed with: ${result}`;
       },
       (reason) => {
+        this.tagString = '';
+        this.imageString = '';
         this.tags.splice(0,this.tags.length);
         this.images.splice(0,this.images.length);
         this.getPageData();

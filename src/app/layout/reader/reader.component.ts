@@ -112,9 +112,9 @@ export class ReaderComponent implements OnInit {
   }
 
   setGlobalTags() {
+    this.tags.splice(0,this.tags.length);
     if(this.tagString == '')
     {
-      this.tags.splice(0,this.tags.length);
       this.images.splice(0,this.images.length);
     }
     let tagNames: string[] = this.tagString.split(" ");

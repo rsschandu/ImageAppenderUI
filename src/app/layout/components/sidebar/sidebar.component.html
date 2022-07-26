@@ -16,6 +16,10 @@
             <i class="fa fa-tag"></i>&nbsp;
             <span>{{ 'Tags' | translate }}</span>
         </a>
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/test']" class="list-group-item">
+            <i class="fa fa-tag"></i>&nbsp;
+            <span>{{ 'Test' | translate }}</span>
+        </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <span>{{ 'Charts' | translate }}</span>
